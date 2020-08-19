@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Google;
 use Illuminate\Http\Request;
 
 class FolderController extends Controller
@@ -22,6 +23,7 @@ class FolderController extends Controller
 
     private function foldersWithVideos($dir, &$results = [])
     {
+        $google = new Google();
         $files = scandir($dir);
 
         foreach ($files as $value) {
@@ -34,7 +36,11 @@ class FolderController extends Controller
             if (is_dir($path)) {
                 foreach (scandir($path) as $fileName) {
                     if (is_file($path . '/' . $fileName) && strpos(mime_content_type($path . '/' . $fileName), 'video') !== false) {
-                        $results[] = str_replace(realpath(storage_path('app/videos')), '', $path);
+                        $name = str_replace(realpath(storage_path('app/videos')), '', $path);
+                        $results[] = [
+                            "name" => $name,
+                            "image" => $google->search($name)->getItems()[0]->link
+                        ];
                         break;
                     }
                 }
