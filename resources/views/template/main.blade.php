@@ -10,7 +10,7 @@
 </head>
 
 <body class="bg-black">
-    <nav class="flex justify-between p-4 items-center bg-gray-900 bg-opacity-75 fixed w-full top-0 right-0">
+    <nav class="flex justify-between p-4 items-center bg-gray-900 bg-opacity-75 fixed w-full top-0 right-0 z-10">
         <div class="">
             <a href="/" class="text-red-600 font-bold">
                 <span class="text-4xl">M</span><span class="text-xs">y</span>
