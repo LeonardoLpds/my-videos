@@ -9,7 +9,7 @@ $(function () {
             console.log('show all');
             $('.searchBlock').show();
         } else {
-            $(`.searchBlock:not(*[class*="${classSearch}"])`).hide();
+            $(`.searchBlock:not([class*="${classSearch}"])`).hide();
 
             $(`.searchBlock[class*="${classSearch}"]`).show();
         }
