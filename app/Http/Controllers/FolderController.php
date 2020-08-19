@@ -37,9 +37,11 @@ class FolderController extends Controller
                 foreach (scandir($path) as $fileName) {
                     if (is_file($path . '/' . $fileName) && strpos(mime_content_type($path . '/' . $fileName), 'video') !== false) {
                         $name = str_replace(realpath(storage_path('app/videos')), '', $path);
+                        $images = $google->search($name)->getItems();
+                        $image = @exif_imagetype($images[0]->link) ? $images[0]->link : $images[1]->link;
                         $results[] = [
                             "name" => $name,
-                            "image" => $google->search($name)->getItems()[0]->link
+                            "image" => $image
                         ];
                         break;
                     }

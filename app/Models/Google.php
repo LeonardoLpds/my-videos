@@ -17,7 +17,7 @@ class Google
         $client->setApplicationName("Images.google");
         $client->setDeveloperKey(env('API_KEY'));
         $this->service = new Google_Service_Customsearch($client);
-        $this->params = ["cx" => env('SEARCH_ENGINE_ID'), "searchType" => "image", "num" => 1, "imgSize" => 'xlarge'];
+        $this->params = ["cx" => env('SEARCH_ENGINE_ID'), "searchType" => "image", "num" => 3, "imgSize" => 'xlarge'];
     }
     
     public function search($searchText)
